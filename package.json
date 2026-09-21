@@ -1,0 +1,7 @@
+{
+  "name":"mitanshu-shah-portfolio",
+  "private":true,
+  "version":"1.0.0",
+  "scripts":{"dev":"vercel dev","build":"echo static-site"},
+  "dependencies":{"resend":"^6.1.0"}
+}
