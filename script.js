@@ -17,17 +17,24 @@ if(contactForm){
     const data=Object.fromEntries(new FormData(contactForm).entries());
     if(!data.name || !data.email || !data.message){contactStatus.textContent='Please fill in your name, email and message.';contactStatus.dataset.state='error';return}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){contactStatus.textContent='Please enter a valid email address.';contactStatus.dataset.state='error';return}
-    contactSubmit.disabled=true;contactSubmit.textContent='Sending...';contactStatus.textContent='';
+    contactSubmit.disabled=true;contactSubmit.textContent='Sending...';contactStatus.textContent='';contactStatus.dataset.state='';
     try{
       const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
       const result=await res.json().catch(()=>({}));
-      if(!res.ok || !result.success) throw new Error(result.message||'Request failed');
-      contactStatus.textContent="Message sent successfully. I'll get back to you soon.";contactStatus.dataset.state='success';contactForm.reset();
+      if(!res.ok || !result.success){
+        const serverMessage=result.message||('Server returned HTTP '+res.status);
+        throw new Error(serverMessage);
+      }
+      contactStatus.textContent="Message sent successfully. I'll get back to you soon.";
+      contactStatus.dataset.state='success';
+      contactForm.reset();
     }catch(err){
-      const subject=encodeURIComponent('Portfolio contact from '+data.name);
-      const body=encodeURIComponent('Name: '+data.name+'\nEmail: '+data.email+'\n\n'+data.message);
-      contactStatus.textContent='Backend is unavailable. Opening your email app instead...';contactStatus.dataset.state='error';
-      window.location.href='mailto:mitanshushah2007@gmail.com?subject='+subject+'&body='+body;
-    }finally{contactSubmit.disabled=false;contactSubmit.textContent='Send message ↗'}
+      console.error('Portfolio contact error:',err);
+      contactStatus.textContent='Unable to send: '+(err.message||'Unknown error')+' — please try again or email me directly.';
+      contactStatus.dataset.state='error';
+    }finally{
+      contactSubmit.disabled=false;
+      contactSubmit.textContent='Send message ↗';
+    }
   });
 }
