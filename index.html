@@ -129,9 +129,16 @@
         <p class="eyebrow">Have an idea?</p>
         <h2>Let's build something<br><span>worth shipping.</span></h2>
         <a class="contact-mail magnetic" href="mailto:mitanshushah2007@gmail.com">mitanshushah2007@gmail.com ↗</a>
+        <form id="contactForm" class="contact-form" novalidate>
+          <label>Name<input name="name" type="text" autocomplete="name" placeholder="Your name" required></label>
+          <label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label>Message<textarea name="message" rows="5" placeholder="Tell me about your idea..." required></textarea></label>
+          <button id="contactSubmit" class="button primary magnetic" type="submit">Send message ↗</button>
+          <p id="contactStatus" class="contact-status" role="status" aria-live="polite"></p>
+        </form>
         <div class="contact-links">
-          <a href="https://www.linkedin.com/in/mitanshu-shah-557756371/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-          <a href="https://github.com/mitanshu007" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/mitanshu-shah-557756371" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="https://github.com/mitanshu007" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
           <a href="mailto:mitanshushah2007@gmail.com">Email ↗</a>
         </div>
       </div>
