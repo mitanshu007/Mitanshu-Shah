@@ -8,9 +8,12 @@ module.exports = async function handler(req,res){
       return res.status(400).json({success:false,message:"Please provide a valid name, email and message."});
     if(String(name).length>100||String(email).length>200||String(message).length>5000)
       return res.status(400).json({success:false,message:"Your message is too long."});
-    if(!process.env.RESEND_API_KEY)
+
+    const resendApiKey=process.env.PORTFOLIO_RESEND_KEY;
+    if(!resendApiKey)
       return res.status(500).json({success:false,message:"Contact service is not configured yet."});
-    const resend=new Resend(process.env.RESEND_API_KEY);
+
+    const resend=new Resend(resendApiKey);
     const result=await resend.emails.send({
       from:"Portfolio <onboarding@resend.dev>",
       to:["mitanshushah2007@gmail.com"],
@@ -21,6 +24,7 @@ module.exports = async function handler(req,res){
     if(result.error) throw new Error(result.error.message);
     return res.status(200).json({success:true,message:"Message sent successfully."});
   }catch(error){
-    return res.status(500).json({success:false,message:"Unable to send your message right now."});
+    console.error("Portfolio contact error:",error);
+    return res.status(500).json({success:false,message:error?.message||"Unable to send your message right now."});
   }
 };
