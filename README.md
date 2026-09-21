@@ -23,3 +23,18 @@ This repository contains the source for the portfolio website, with an Antigravi
 - GitHub: https://github.com/mitanshu007
 - LinkedIn: https://www.linkedin.com/in/mitanshu-shah-557756371/
 - Email: mailto:mitanshushah2007@gmail.com
+
+
+## Contact Form Email Delivery
+
+The contact form sends submissions to **mitanshushah2007@gmail.com** through the Vercel serverless endpoint `POST /api/contact` and Resend.
+
+For Vercel production, add this environment variable in Project Settings → Environment Variables:
+
+```
+RESEND_API_KEY=your_resend_api_key
+```
+
+The key must remain server-side. Visitors do not see it. Each submission includes the visitor's name, email, message, and timestamp. The visitor's email is used as Reply-To so you can reply directly from Gmail.
+
+After configuring the key and redeploying, a successful form submission will arrive in the Gmail inbox for **mitanshushah2007@gmail.com**.
