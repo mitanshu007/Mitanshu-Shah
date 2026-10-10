@@ -186,3 +186,25 @@ body{min-width:320px}
 
 .project-actions{display:flex;align-items:center;gap:10px;margin-top:28px;flex-wrap:wrap}.project-actions .project-link{margin-top:0;display:inline-flex;align-items:center;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.02)}.project-actions .project-link:hover{border-color:rgba(123,231,255,.3);color:#fff}.project-actions .live-link{background:rgba(49,168,255,.09);border-color:rgba(123,231,255,.2)}
 @media(max-width:599px){.project-actions{gap:8px}.project-actions .project-link{padding:9px 12px;font-size:12px}}
+
+/* IEEE Synapse Hackathon showcase */
+.hackathon-head{display:flex;align-items:flex-end;justify-content:space-between;gap:36px;margin:100px 0 30px;padding-top:60px;border-top:1px solid var(--line)}
+.hackathon-head>div{max-width:760px}
+.hackathon-head h2{font:700 clamp(42px,5vw,64px)/1 "Space Grotesk";letter-spacing:-.045em;margin:15px 0 18px}
+.hackathon-head h2 span{color:transparent;-webkit-text-stroke:1px rgba(123,231,255,.72)}
+.hackathon-intro{color:#95a3b7;line-height:1.8;font-size:16px;max-width:720px;margin:0}
+.hackathon-head .button{white-space:nowrap;flex-shrink:0;margin-bottom:6px}
+.hackathon-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.hackathon-card{position:relative;min-width:0;min-height:310px;padding:28px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(12,24,39,.9),rgba(5,9,15,.96));display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.hackathon-card:before{content:"";position:absolute;right:-90px;top:-105px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(49,168,255,.15),transparent 70%);pointer-events:none}
+.hackathon-card:hover{border-color:rgba(123,231,255,.3);box-shadow:0 18px 60px rgba(0,0,0,.24)}
+.hackathon-card-top{width:100%;display:flex;align-items:center;justify-content:space-between;gap:15px;color:#6e819a;font-size:10px;letter-spacing:.15em}
+.hackathon-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;border:1px solid rgba(123,231,255,.2);background:rgba(49,168,255,.08);color:var(--cyan);font:700 23px "Space Grotesk"}
+.hackathon-card .project-kicker{margin-top:28px}
+.hackathon-card h3{font:600 clamp(23px,2.3vw,30px)/1.15 "Space Grotesk";letter-spacing:-.025em;margin:0 0 8px;position:relative}
+.hackathon-card>p:not(.project-kicker){color:#8e9bad;line-height:1.7;font-size:14px;max-width:560px;margin:8px 0 0}
+.hackathon-card .project-tags{margin-top:20px}
+.hackathon-card .project-link{display:inline-flex;align-items:center;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.02);margin-top:auto}
+.hackathon-card .project-link:hover{border-color:rgba(123,231,255,.3);color:#fff}
+@media(max-width:850px){.hackathon-head{align-items:flex-start;flex-direction:column;margin-top:75px;gap:25px}.hackathon-grid{grid-template-columns:1fr 1fr}.hackathon-card{padding:24px;min-height:330px}}
+@media(max-width:599px){.hackathon-head{margin-top:62px;padding-top:42px}.hackathon-head h2{font-size:clamp(39px,11vw,54px)}.hackathon-intro{font-size:14px}.hackathon-grid{grid-template-columns:1fr;gap:14px}.hackathon-card{min-height:290px;padding:23px;border-radius:20px}.hackathon-card h3{font-size:25px}.hackathon-head .button{white-space:normal}}
